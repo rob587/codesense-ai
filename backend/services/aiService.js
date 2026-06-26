@@ -56,4 +56,8 @@ Restituisci SOLO questo JSON:
     temperature: 0.3,
     max_tokens: 2000,
   });
+
+  const content = completion.choices[0].message.content;
+  const clean = content.replace(/```json|```/g, "").trim();
+  return JSON.parse(clean);
 };
