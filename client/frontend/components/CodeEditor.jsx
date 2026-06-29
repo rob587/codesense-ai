@@ -20,6 +20,28 @@ const CodeEditor = (onReview, onLoading) => {
   const [language, setLanguage] = useState("javascript");
   const [error, setError] = useState(null);
 
+  const handleSubmit = async () => {
+    if (!code.trim()) {
+      setError("Inserisci del codice da analizzare");
+      return;
+    }
+    setError(null);
+    onLoading(true);
+    try {
+      const data = await reviewCode(code, language);
+      onReview(data.review);
+    } catch (err) {
+      setError("Errore durante la review. Riprova.");
+    } finally {
+      onLoading(false);
+    }
+  };
+
+  const handleClear = () => {
+    setCode("");
+    setError(null);
+  };
+
   return <div></div>;
 };
 
