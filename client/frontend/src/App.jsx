@@ -1,6 +1,6 @@
 import { useState } from "react";
-import CodeEditor from "./components/CodeEditor";
-import ReviewResults from "./components/ReviewResults";
+import CodeEditor from "../components/CodeEditor";
+import ReviewResults from "../components/ReviewResults";
 
 function App() {
   const [review, setReview] = useState(null);

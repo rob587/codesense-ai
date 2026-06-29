@@ -14,39 +14,16 @@ CODICE DA ANALIZZARE:
 ${code}
 \`\`\`
 
-Restituisci SOLO questo JSON:
+
+Restituisci SOLO questo JSON, senza markdown, senza testo aggiuntivo, senza spiegazioni:
 {
   "qualityScore": <numero da 1 a 10>,
-  "summary": "<breve descrizione generale del codice>",
-  "bugs": [
-    {
-      "severity": "<critical|warning|info>",
-      "line": "<numero riga o 'N/A'>",
-      "description": "<descrizione del bug>",
-      "fix": "<come fixarlo>"
-    }
-  ],
-  "performance": [
-    {
-      "description": "<problema di performance>",
-      "fix": "<come migliorarlo>"
-    }
-  ],
-  "bestPractices": [
-    {
-      "description": "<best practice violata>",
-      "fix": "<come correggerla>"
-    }
-  ],
-  "refactoring": [
-    {
-      "description": "<suggerimento di refactoring>",
-      "example": "<esempio di codice migliorato>"
-    }
-  ],
-  "positives": [
-    "<cosa è fatto bene nel codice>"
-  ]
+  "summary": "<descrizione breve>",
+  "bugs": [{"severity": "<critical|warning|info>", "line": "<riga o N/A>", "description": "<problema>", "fix": "<soluzione>"}],
+  "performance": [{"description": "<problema>", "fix": "<soluzione>"}],
+  "bestPractices": [{"description": "<problema>", "fix": "<soluzione>"}],
+  "refactoring": [{"description": "<suggerimento>", "example": "<codice>"}],
+  "positives": ["<punto positivo>"]
 }
 `;
 
@@ -54,7 +31,7 @@ Restituisci SOLO questo JSON:
     model: "llama-3.3-70b-versatile",
     messages: [{ role: "user", content: prompt }],
     temperature: 0.3,
-    max_tokens: 2000,
+    max_tokens: 800,
   });
 
   const content = completion.choices[0].message.content;

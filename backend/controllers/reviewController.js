@@ -12,6 +12,8 @@ export const reviewCode = async (req, res) => {
       return res.status(400).json({ error: "Il linguaggio è obbligatorio" });
     }
 
+    const trimmedCode = code.slice(0, 3000);
+
     const review = await generateCodeReview(code, language);
 
     res.json({

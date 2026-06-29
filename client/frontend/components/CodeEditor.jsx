@@ -15,7 +15,7 @@ const LANGUAGES = [
   "sql",
 ];
 
-const CodeEditor = (onReview, onLoading) => {
+const CodeEditor = ({ onReview, onLoading }) => {
   const [code, setCode] = useState("");
   const [language, setLanguage] = useState("javascript");
   const [error, setError] = useState(null);
